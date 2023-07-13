@@ -10,7 +10,6 @@ environment:
 before_build:
   - cmd: set PATH=%CONDA%;%CONDA%\Scripts;%CONDA%\Library\bin;%CONDA%\Library\mingw-w64\bin;%PATH%
   - cmd: conda config --add channels conda-forge
-  - cmd: conda config --set channel_priority strict
   - cmd: conda config --add channels modsim
   - cmd: conda update -y conda
   # pyinstaller is currently not working in conjunction with mycelyso, hopefully a pinned commit will resolve this
@@ -20,7 +19,7 @@ build_script:
   # first install the latest version, that fetches all deps
   - cmd: conda install -y python==3.7 mycelyso mycelyso-inspector charset-normalizer
   # there seems to be an old version around
-  - cmd: conda update -y
+  - cmd: conda update -y pyasn1
   # ... then install the git version. if deps would be missing pip would now try to get'em
   - cmd: python setup.py install
   # this is the starter, full of implicit exports to steer pyinstaller into the right direction
