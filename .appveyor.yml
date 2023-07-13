@@ -10,7 +10,7 @@ environment:
 before_build:
   - cmd: set PATH=%CONDA%;%CONDA%\Scripts;%CONDA%\Library\bin;%CONDA%\Library\mingw-w64\bin;%PATH%
   - cmd: conda config --add channels conda-forge
-  -cmd: conda config --set channel_priority strict
+  - cmd: conda config --set channel_priority strict
   - cmd: conda config --add channels modsim
   - cmd: conda update -y conda
   - cmd: conda install charset-normalizer
