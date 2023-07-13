@@ -5,7 +5,7 @@ image: Visual Studio 2017
 clone_depth: 1
 
 environment:
-  CONDA: C:\Miniconda36-x64\Script
+  CONDA: C:\Miniconda36-x64\Scripts
 
 before_build:
   - cmd: set PATH=%CONDA%;%CONDA%\Scripts;%CONDA%\Library\bin;%CONDA%\Library\mingw-w64\bin;%PATH%
@@ -19,7 +19,7 @@ before_build:
 
 build_script:
   # first install the latest version, that fetches all deps
-  - cmd: conda install -y python==3.7 mycelyso mycelyso-inspector charset-normalizer
+  - cmd: conda install -y python==3.8 mycelyso mycelyso-inspector charset-normalizer
   # there seems to be an old version around
   - cmd: conda clean --packages
   # ... then install the git version. if deps would be missing pip would now try to get'em
