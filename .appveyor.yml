@@ -8,6 +8,7 @@ environment:
   CONDA: C:\Miniconda36-x64
 
 before_build:
+  - cmd: conda clean --packages
   - cmd: set PATH=%CONDA%;%CONDA%\Scripts;%CONDA%\Library\bin;%CONDA%\Library\mingw-w64\bin;%PATH%
   - cmd: conda config --add channels conda-forge
   - cmd: conda config --add channels modsim
@@ -19,7 +20,7 @@ build_script:
   # first install the latest version, that fetches all deps
   - cmd: conda install -y python==3.7 mycelyso mycelyso-inspector
   # there seems to be an old version around
-  - cmd: conda update -y pyasn1
+  - cmd: conda update -y
   # ... then install the git version. if deps would be missing pip would now try to get'em
   - cmd: python setup.py install
   # this is the starter, full of implicit exports to steer pyinstaller into the right direction
